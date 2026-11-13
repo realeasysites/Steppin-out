@@ -1,0 +1,29 @@
+<!doctype html>
+<html lang="en"><head>
+<meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<meta name="robots" content="noindex">
+<title>Studio Dashboard — Steppin' Out</title>
+<link rel="icon" href="/img/favicon.png">
+<link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Rye&family=Nunito:wght@400;700;800&display=swap" rel="stylesheet">
+<style>
+*{box-sizing:border-box}body{margin:0;min-height:100vh;display:grid;place-items:center;font-family:Nunito,system-ui,sans-serif;background:#0f1a2b;color:#111}
+.box{background:#fffaf2;padding:36px 32px;border-radius:18px;width:min(380px,92vw);text-align:center;box-shadow:0 20px 60px rgba(0,0,0,.4)}
+img{width:160px}h1{font-family:Rye,serif;font-weight:400;font-size:22px;margin:10px 0 18px;color:#1b5fa3}
+input{width:100%;padding:14px;border:2px solid #d8d1c4;border-radius:10px;font:inherit;font-size:16px}
+button{margin-top:12px;width:100%;padding:14px;border:0;border-radius:10px;background:#e2368e;color:#fff;font:inherit;font-weight:800;font-size:16px;cursor:pointer}
+.err{color:#b4123f;font-weight:700;margin:0 0 10px;display:none}
+</style></head><body>
+<form class="box" method="post" action="/admin/login">
+  <img src="/img/logo.png" alt="Steppin' Out Dance Centre">
+  <h1>Studio Dashboard</h1>
+  <p class="err" id="err"></p>
+  <input type="password" name="password" placeholder="Password" autocomplete="current-password" required autofocus>
+  <button type="submit">Sign in</button>
+</form>
+<script>
+const e=new URLSearchParams(location.search).get('e');const el=document.getElementById('err');
+if(e==='1'){el.textContent='Wrong password — try again.';el.style.display='block'}
+if(e==='disabled'){el.textContent='Login is off until ADMIN_PASSWORD is set on the server.';el.style.display='block'}
+</script>
+</body></html>
